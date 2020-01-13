@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/tv_notiftitle2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nearby Promo Detected"
+        style="@style/TextAppearance.Compat.Notification.Title"
+        />
+    <TextView
+        android:id="@+id/tv_notifstore2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bench is have a promo"
+        style="@style/TextAppearance.Compat.Notification.Line2"
+        />
+
+    <ImageView
+        android:id="@+id/iv_notifpromoimage"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:src="@drawable/hyperdealslogo"
+        />
+    <TextView
+        android:layout_gravity="center"
+        android:id="@+id/tv_notif_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This is a collapsing notification that is a testing run for the aplication hyperdeals hope it would have succeed in testing How we can build time based notifications e.g. If user select 5am notifications should occur on every day on 5am :) and some user can use set their own time for notifications﻿ "
+        style="@style/TextAppearance.Compat.Notification.Info"
+
+        />
+
+</LinearLayout>

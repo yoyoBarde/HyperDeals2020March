@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="Profile" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_notifications_black_24dp"
+            android:title="Notifications" />
+
+          <item
+            android:id="@+id/nav_interest"
+            android:icon="@drawable/ic_interest_like"
+            android:title="Deals you interest" />
+        <item
+            android:id="@+id/nav_preferemce"
+            android:icon="@drawable/shop"
+            android:title="Preferences" />
+        <item
+            android:id="@+id/nav_preferred_time"
+            android:icon="@mipmap/ic_preferred_time"
+            android:title="Preferred Time" />
+        <item
+            android:id="@+id/nav_rewards"
+            android:icon="@drawable/rating"
+
+            android:title="Rewards" />
+
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_feedback_black_24dp"
+                android:title="Help and Feedback" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_note_black_24dp"
+                android:title="About Hyper Deals" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_keyboard_return_black_24dp"
+                android:title="Logout" />
+
+        </menu>
+    </item>
+
+</menu>

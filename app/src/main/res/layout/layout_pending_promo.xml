@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/PromoContainer"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+
+
+    >
+
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/PromoImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/bench"
+
+            />
+
+        <TextView
+            android:id="@+id/PromoStore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingVertical="4dp"
+            android:text="Bench"
+            android:textAlignment="center"
+            android:textColor="#ff0000"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout3"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout3">
+
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/PromoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Bench Denim 50% Off!"
+            android:textColor="#68a8e3"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/PromoDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bench denim sale: Promo runs til May20-21,2018. Hurry and grab yours now!"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/linearLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+        tools:layout_editor_absoluteY="121dp">
+
+        <TextView
+            android:id="@+id/PromoPlace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Sm Seaside City Cebu"
+            android:textColor="#68a8e3"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/PromoConctact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="09154638674"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="295dp"
+            tools:layout_editor_absoluteY="205dp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/tvViewPromo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="View"
+        android:textColor="@color/red"
+        android:textSize="20sp"
+        android:textStyle="bold"
+ />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1.5dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/black"
+ />
+
+</LinearLayout>

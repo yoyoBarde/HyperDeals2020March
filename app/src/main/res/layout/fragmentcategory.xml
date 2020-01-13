@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/swipe"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   >
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    >
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/relative1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/ShimmerFrameLayout"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
+
+        >
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+>
+            <include
+                layout="@layout/model_categories_placeholder"
+                />
+            <include
+                layout="@layout/model_categories_placeholder"
+                />
+            <include
+                layout="@layout/model_categories_placeholder"
+                />
+            <include
+                layout="@layout/model_categories_placeholder"
+                />
+            <include
+                layout="@layout/model_categories_placeholder"
+                />
+
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+                <include
+                    layout="@layout/model_categories_placeholder"
+                    />
+                <include
+                    layout="@layout/model_categories_placeholder"
+                    />
+                <include
+                    layout="@layout/model_categories_placeholder"
+                    />
+                <include
+                    layout="@layout/model_categories_placeholder"
+                    />
+                <include
+                    layout="@layout/model_categories_placeholder"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:textAlignment="center"
+        android:id="@+id/textView9"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Categories"
+        android:textColor="#426db8"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerCategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Nearby Promos"
+        android:textColor="#426db8"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerCategory" />
+
+    <ImageView
+        android:id="@+id/minimize_nearby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_arrow_blue_right"
+        app:layout_constraintBottom_toBottomOf="@+id/textView16"
+        app:layout_constraintStart_toEndOf="@+id/textView16"
+        app:layout_constraintTop_toTopOf="@+id/textView16" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/my_recycler_view111"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <TextView
+        android:id="@+id/textviewxxx"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+
+
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Hottest Promo"
+        android:textColor="#426db8"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_recycler_view111" />
+
+    <ImageView
+        android:id="@+id/minimize_hottest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:src="@mipmap/ic_arrow_blue_right"
+        app:layout_constraintBottom_toBottomOf="@+id/textviewxxx"
+        app:layout_constraintStart_toEndOf="@+id/textviewxxx"
+        app:layout_constraintTop_toTopOf="@+id/textviewxxx" />
+
+    <ImageView
+        android:id="@+id/btnRefreshNearby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        app:srcCompat="@drawable/ic_refresh_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/minimize_nearby"
+        app:layout_constraintStart_toEndOf="@+id/minimize_nearby"
+        app:layout_constraintTop_toTopOf="@+id/minimize_nearby" />
+
+    <android.support.v7.widget.RecyclerView
+
+        android:id="@+id/reclerView_hottest_promo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textviewxxx" />
+
+    <TextView
+        android:id="@+id/textviewxxxx"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Prefered Promo"
+        android:textColor="#426db8"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reclerView_hottest_promo" />
+
+    <ImageView
+        android:id="@+id/minimize_preferred"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:src="@mipmap/ic_arrow_blue_right"
+        app:layout_constraintBottom_toBottomOf="@+id/textviewxxxx"
+        app:layout_constraintStart_toEndOf="@+id/textviewxxxx"
+        app:layout_constraintTop_toTopOf="@+id/textviewxxxx" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_prefered_promo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textviewxxxx" />
+</android.support.constraint.ConstraintLayout>
+</ScrollView>
+</android.support.v4.widget.SwipeRefreshLayout>
+
