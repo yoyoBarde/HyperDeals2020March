@@ -86,7 +86,7 @@ class Admin : AppCompatActivity() {
                    return AdminAddCategory()
                }
                1-> {
-                   return AdminAddIncentives()
+                   return DataControl()
                }
                2->{
                    return AdminApprovePromoFragment()
@@ -104,7 +104,7 @@ class Admin : AppCompatActivity() {
         override fun getPageTitle(position: Int): CharSequence? {
             when (position){
                 0->return "Add Category"
-                1->return "Add Incentives"
+                1->return "Control Data"
                 2->return "Approve promos"
             }
             return null

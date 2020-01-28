@@ -3,7 +3,7 @@
     <string name="title_activity_main2">FragmentMain</string>
     <string name="tab_text1">Category</string>
     <string name="tab_text2">ProMap</string>
-    <string name="tab_text3">ProMap List</string>
+    <string name="tab_text3">Recommended</string>
     <string name="tab_text_4">Four</string>
     <string name="tab_text_5">Five</string>
     <string name="tab_text_6">Six</string>
@@ -36,5 +36,18 @@
     <string name="viewed"> views</string>
     <string name="dismissed"> dismissed</string>
     <string name="sent"> people have received</string>
+    <string-array name="demography_age">
+        <item>Adult</item>
+        <item>Teenager</item>
+        <item>Kids</item>
+    </string-array>
+    <string-array name="demography_gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string-array name="demography_status">
+        <item>Single</item>
+        <item>Married</item>
+    </string-array>
 
 </resources>

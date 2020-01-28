@@ -24,6 +24,9 @@ interface myInterfacesCategories{
     fun addCategoriesUser(myCategoryList:ArrayList<CategoryParse>)
 
 }
+interface myInterfaceSelectPromo{
+    fun selectedPromo(selectedPromo:PromoModel)
+}
 interface  myInterfacesAddItem{
 
     fun addPromoItemBusiness(promoItemListParcelable: ArrayList<promoItemParcelable>)

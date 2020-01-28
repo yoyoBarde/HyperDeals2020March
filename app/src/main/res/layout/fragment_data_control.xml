@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Admin.DataControl">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Control Demographics" />
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        >
+    <Spinner
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/demography_age"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_height="wrap_content" />
+
+        <Spinner
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/demography_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            />
+        <Spinner
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/demography_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            />
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/black"
+        />
+    <ImageView
+        android:tooltipText="select promo"
+        android:layout_marginTop="10dp"
+        android:id="@+id/ivPromoPic"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+
+        android:background="@color/light_gray"
+        />
+        <TextView
+            android:padding="5dp"
+            android:id="@+id/tvPromoStore"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Store Name"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+
+            />
+    <TextView
+        android:padding="5dp"
+
+        android:id="@+id/tvPromoName"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Promo Name"
+        android:textColor="@color/black"
+
+
+        />
+    <TextView
+        android:padding="5dp"
+
+        android:id="@+id/tvSubcategories"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@color/black"
+        />
+    <Button
+        android:id="@+id/btnSelectPromo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Select Promo"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/black"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Data"
+        android:textColor="@color/black"
+
+        android:layout_gravity="center_horizontal"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Button
+
+            android:id="@+id/btnView"
+            android:padding="2.5dp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Views"
+            android:background="@drawable/button_curve"
+
+            />
+        <Button
+            android:id="@+id/btnLike"
+
+            android:padding="2.5dp"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Likes"
+            android:background="@drawable/button_curve"
+            android:layout_weight="1"
+
+
+            />
+        <Button
+            android:id="@+id/btnPreferred"
+
+            android:padding="2.5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prefered"
+            android:background="@drawable/button_curve"
+            android:layout_weight="1"
+
+
+            />
+        <Button
+            android:id="@+id/btnAvailed"
+
+            android:padding="2.5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Availed"
+            android:background="@drawable/button_curve"
+            android:layout_weight="1"
+
+            />
+        <Button
+            android:id="@+id/btnDismiss"
+
+            android:padding="2.5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dismissed"
+            android:background="@drawable/button_curve"
+            android:layout_weight="1"
+
+
+            />
+
+
+    </LinearLayout>
+    <EditText
+        android:inputType="numberDecimal"
+        android:id="@+id/etNumber"
+        android:padding="5dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="number"
+
+        />
+    <Button
+        android:id="@+id/btnExecute"
+        android:text="execute"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+
+</LinearLayout>
