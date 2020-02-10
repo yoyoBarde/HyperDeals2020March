@@ -314,7 +314,7 @@ class HottestPromoAdapter(private val context: Context, private val promolist : 
                         if (document.exists()) {
 
                             var mySubcategoryPref = document.toObject(UserSubcategoriesPreferencesParcelable::class.java)
-                            prevCountLiked = mySubcategoryPref.viewCount + 1
+                            prevCountLiked = 1
                             Log.e(TAG, "Cached document data: ${document?.data}")
 
                             var mySubcategoryPreference = UserSubcategoriesPreferences(myPromo.subcategories[i], prevCountLiked)
@@ -370,7 +370,7 @@ class HottestPromoAdapter(private val context: Context, private val promolist : 
                         if (document.exists()) {
 
                             var mySubcategoryPref = document.toObject(UserSubcategoriesPreferencesParcelable::class.java)
-                            prevCountLiked = mySubcategoryPref.viewCount - 1
+                            prevCountLiked = 0
                             Log.e(TAG, "Cached document data: ${document?.data}")
 
                             var mySubcategoryPreference = UserSubcategoriesPreferences(myPromo.subcategories[i], prevCountLiked)

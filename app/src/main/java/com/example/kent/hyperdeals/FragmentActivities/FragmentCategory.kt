@@ -336,7 +336,8 @@ fun getPromos(){
 
 
                     database.collection("PromoDemography").document(upload.promoID).collection("AgeTarget").document("AgeTarget").get().addOnSuccessListener { document ->
-                        if (document != null) {
+                        if (document != null && document.exists()) {
+
                             Log.e(TAG, "DocumentSnapshot data: ${document.data}")
                             var myAgeTarget = document.toObject(AgeTargetParcelable::class.java)
                             Log.e(TAG,myAgeTarget.toString())
@@ -349,7 +350,7 @@ fun getPromos(){
                                 Log.d(TAG, "get failed with ", exception)
                             }
                     database.collection("PromoDemography").document(upload.promoID).collection("GenderTarget").document("GenderTarget").get().addOnSuccessListener { document ->
-                        if (document != null) {
+                        if (document != null && document.exists()) {
 
                             Log.e(TAG, "DocumentSnapshot data: ${document.data}")
                             var myGenderTarget = document.toObject(GenderTargetParcelable::class.java)
@@ -364,7 +365,7 @@ fun getPromos(){
                                 Log.d(TAG, "get failed with ", exception)
                             }
                     database.collection("PromoDemography").document(upload.promoID).collection("StatusTarget").document("StatusTarget").get().addOnSuccessListener { document ->
-                        if (document != null) {
+                        if (document != null && document.exists()) {
                             Log.e(TAG, "DocumentSnapshot data: ${document.data}")
                             var myStatusTarget = document.toObject(StatusTargetParcelable::class.java)
                             Log.e(TAG,myStatusTarget.toString())

@@ -53,6 +53,8 @@ val TAG = "FragmentProMapList"
     var preferenceCriteria = 1.5
     var availedCriteria = 1.6
     var dismissedCriteria = -1.3
+
+    lateinit var globalLocalPromoList:ArrayList<PromoModel>
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         return inflater.inflate(R.layout.fragmentpromaplist,container,false)
@@ -61,9 +63,10 @@ val TAG = "FragmentProMapList"
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         swipe.setOnRefreshListener {
-
+            Loopthelist(FragmentCategory.globalPromoList)
 
         }
+        globalLocalPromoList  = FragmentCategory.globalPromoList
 
         var filterAdapter:ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(activity!!,R.array.filter_recommendation,android.R.layout.simple_spinner_item)
 
@@ -79,19 +82,25 @@ val TAG = "FragmentProMapList"
 
 
                 if( filter_spinner.selectedItem.toString().equals("Recommended")){
+
                     Log.e(TAG,"Recommended")
+                    if(executed)
+                    sortFinalRecommendedList(globalLocalPromoList,0)
                 }
 
 
                 else if( filter_spinner.selectedItem.toString().equals("Distance")){
 
                     Log.e(TAG,"Distance")
+                    sortFinalRecommendedList(globalLocalPromoList,1)
 
 
 
                 }
                 else if(filter_spinner.selectedItem.toString().equals("Preferred")){
                     Log.e(TAG,"Preferred")
+                    sortFinalRecommendedList(globalLocalPromoList,2)
+
 
                 }
 
@@ -163,7 +172,7 @@ val TAG = "FragmentProMapList"
                                 if (UserView.Age.matches(FragmentCategory.globalUserDemography.Age.toRegex()))
                                     myPromoList[i].ageMatchViews = myPromoList[i].ageMatchViews + 1
                                 if (UserView.Status.matches(FragmentCategory.globalUserDemography.Status.toRegex()))
-                                    myPromoList[i].statusMatchViews = myPromoList[i].statusMatchViews + 1
+                                    myPromoList[i].statusMatchViews = DmyPromoList[i].statusMatchViews + 1
 
 
 
@@ -404,7 +413,7 @@ val TAG = "FragmentProMapList"
 
                                 myPromoList[i].subcategory_viewPoints = myPromoList[i].subcategory_viewCount * viewCriteria
                                 myPromoList[i].subcategory_likesPoints = myPromoList[i].subcategory_likesCount * likeCriteria
-                                myPromoList[i].subcategory_preferencePoints = myPromoList[i].subcategory_preferenceCount * preferenceCriteria
+                                myPromoList[i].subcategory_preferencePoints = myPromoList[i].preferenceMatched * preferenceCriteria
                                 myPromoList[i].subcategory_availedPoints = myPromoList[i].subcategory_availedCount * availedCriteria
                                 myPromoList[i].subcategory_dismissedPoints = myPromoList[i].subcategory_dismissedCount * dismissedCriteria
 
@@ -461,6 +470,7 @@ val TAG = "FragmentProMapList"
 
 
 
+        myPromoList[i].totalPoints = myPromoList[i].demography_totalPoints + myPromoList[i].subcategory_totalPoints
 
         Log.e(TAG,"  ${myPromoList[i].promoname}    viewCount   -   likeCount   -   preferenceCount -   availedCount    -   dismissedCount  -   ${myPromoList[i].promoID}\n")
         Log.e(TAG,"Demography Scoring")
@@ -471,12 +481,95 @@ val TAG = "FragmentProMapList"
         Log.e(TAG,"count - ${myPromoList[i].subcategory_viewCount}  ${myPromoList[i].subcategory_likesCount}  ${myPromoList[i].subcategory_preferenceCount}  ${myPromoList[i].subcategory_availedCount}  ${myPromoList[i].subcategory_dismissedCount}")
         Log.e(TAG,"points - ${  myPromoList[i].subcategory_viewPoints}  ${myPromoList[i].subcategory_likesPoints}  ${myPromoList[i].subcategory_preferencePoints}  ${myPromoList[i].subcategory_availedPoints}  ${myPromoList[i].subcategory_dismissedPoints} - total ${myPromoList[i].subcategory_totalPoints }")
 
-    }
 
 
     }
+        sortFinalRecommendedList(myPromoList,0)
+
+    }
 
 
+    fun sortFinalRecommendedList(myPromoList:ArrayList<PromoModel>,filter:Int){
+        executed = true
+
+        var finalsortedList = myPromoList.sortedWith(compareByDescending {it.totalPoints})
+
+
+        if(filter==0){
+            finalsortedList  =  myPromoList.sortedWith(compareByDescending {it.totalPoints})
+
+        }
+        else if(filter==1){
+            finalsortedList  =  myPromoList.sortedWith(compareByDescending {it.distance})
+
+
+        }
+        else if(filter==2){
+            finalsortedList  =  myPromoList.sortedWith(compareByDescending {it.preferenceMatched})
+
+
+        }
+        var sortedRecycler2List = ArrayList<PromoModel>()
+        var sortedRecycler3List = ArrayList<PromoModel>()
+
+        for(i in 0 until finalsortedList.size){
+
+
+            if(i==0){
+
+                Picasso.get()
+                        .load(finalsortedList[i].promoImageLink)
+                        .placeholder(R.drawable.hyperdealslogofinal)
+                        .into(PromoImage)
+
+                PromoStore.text = finalsortedList[i].promoStore
+                PromoTitle.text = finalsortedList[i].promoname
+                this.PromoDescription.text = finalsortedList[i].promodescription
+                PromoPlace.text = finalsortedList[i].promoPlace
+                PromoConctact.text = finalsortedList[i].promoContactNumber
+
+            }
+            else{
+                if(i<3) {
+                    sortedRecycler2List.add(finalsortedList[i])
+
+                }
+                else{
+                    if(i<20){
+                        sortedRecycler3List.add(finalsortedList[i])
+                    }
+
+
+                }
+
+
+            }
+
+        }
+
+        setAdapter2(sortedRecycler2List)
+        setAdapter3(sortedRecycler3List)
+
+    }
+
+
+    fun setAdapter3(promoList:ArrayList<PromoModel>){
+        var mSelected: SparseBooleanArray = SparseBooleanArray()
+
+        recyclerView3.layoutManager = LinearLayoutManager(activity!!, LinearLayout.VERTICAL,false)
+        recyclerView3.adapter =  PromoListAdapter(activity!!,mSelected, promoList)
+        recyclerView3.itemAnimator = DefaultItemAnimator()
+
+
+    }
+    fun setAdapter2(promoList:ArrayList<PromoModel>){
+        var mSelected: SparseBooleanArray = SparseBooleanArray()
+        recyclerView2.layoutManager = GridLayoutManager(activity!!,2)
+        recyclerView2.adapter =  PromoListAdapter(activity!!,mSelected, promoList)
+        recyclerView2.itemAnimator = DefaultItemAnimator()
+
+
+    }
 
 
 

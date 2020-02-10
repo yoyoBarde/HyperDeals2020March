@@ -81,6 +81,8 @@ class PromoModel() : Parcelable {
         var subcategory_dismissedPoints:Double = 0.0
         var subcategory_totalPoints:Double = 0.0
 
+        var totalPoints :Double = 0.0
+
         var genderMatchViews = 0
         var ageMatchViews = 0
         var statusMatchViews = 0
