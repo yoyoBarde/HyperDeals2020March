@@ -67,6 +67,7 @@ try{
                 recyclerViewCategories.layoutManager = LinearLayoutManager(activity!!)
                 recyclerViewCategories.adapter = myAdapter
                 iv_close.setOnClickListener {
+
                     dismiss()
 
                 }

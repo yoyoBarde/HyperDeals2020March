@@ -54,16 +54,54 @@ class PromoModel() : Parcelable {
         var startDateCalendar = Calendar.getInstance()
         var endDateCalendar =Calendar.getInstance()
         var hottestPoints = 0
-        var distancematchedPoints = 0.0
-        var distancePoints:Double = 0.0
-        var matchedPoints:Double= 0.0
-        var categoryViews:Double = 0.0
-        var subcategoryViews:Double = 0.0
-        var categoryPoints:Double = 0.0
-        var subcategoryPonts:Double = 0.0
-        var categoryLikedPoints:Double = 0.0
-        var subcategoryLikedPoints:Double = 0.0
-        var totalPoints = 0.0
+
+        var userListView = ArrayList<UserModelParce>()
+        var userListLikes = ArrayList<UserModelParce>()
+        var userListPreferred = ArrayList<UserModelParce>()
+        var userListAvailed = ArrayList<UserModelParce>()
+        var userListDismissed = ArrayList<UserModelParce>()
+
+        var demography_likesPoints:Double = 0.0
+        var demography_viewPoints:Double = 0.0
+        var demography_preferencePoints:Double = 0.0
+        var demography_availedPoints:Double = 0.0
+        var demography_dismissedPoints:Double = 0.0
+        var demography_totalPoints:Double = 0.0
+
+        var subcategory_likesCount:Int = 0
+        var subcategory_viewCount:Int = 0
+        var subcategory_preferenceCount:Int = 0
+        var subcategory_availedCount:Int = 0
+        var subcategory_dismissedCount:Int = 0
+
+        var subcategory_likesPoints:Double = 0.0
+        var subcategory_viewPoints:Double = 0.0
+        var subcategory_preferencePoints:Double = 0.0
+        var subcategory_availedPoints:Double = 0.0
+        var subcategory_dismissedPoints:Double = 0.0
+        var subcategory_totalPoints:Double = 0.0
+
+        var genderMatchViews = 0
+        var ageMatchViews = 0
+        var statusMatchViews = 0
+
+        var genderMatchLikes = 0
+        var ageMatchLikes = 0
+        var statusMatchLikes = 0
+
+        var genderMatchPreferred = 0
+        var ageMatchPreferred = 0
+        var statusMatchPreferred = 0
+
+        var genderMatchAvailed = 0
+        var ageMatchAvailed = 0
+        var statusMatchAvailed = 0
+
+        var genderMatchDismissed = 0
+        var ageMatchDismissed = 0
+        var statusMatchDismissed = 0
+
+
 
         constructor(parcel: Parcel) : this() {
                 promoCategories = parcel.readString()

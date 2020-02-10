@@ -49,5 +49,29 @@
         <item>Single</item>
         <item>Married</item>
     </string-array>
+    <string-array name="filter_recommendation">
+        <item>Recommended</item>
+        <item>Distance</item>
+        <item>Preferred</item>
+
+    </string-array>
+    <string-array name="promo_demography_age">
+        <item>All</item>
+        <item>Adult</item>
+        <item>Teenager</item>
+        <item>Kids</item>
+    </string-array>
+    <string-array name="promo_demography_gender">
+        <item>Male/Female</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string-array name="promo_demography_status">
+        <item>Single/Married</item>
+        <item>Single</item>
+        <item>Married</item>
+    </string-array>
+
+
 
 </resources>

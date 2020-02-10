@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.kent.hyperdeals.FragmentActivities.FragmentCategory
 import com.example.kent.hyperdeals.FragmentsBusiness.Business_PromoProfile
 import com.example.kent.hyperdeals.LoginActivity
 import com.example.kent.hyperdeals.Model.*
@@ -199,6 +200,8 @@ companion object {
 
 
                 if (!likeRetrieved) {
+                    userLikedSubcategory(promolist[position])
+
                     uiThread {     interested.setImageResource(R.drawable.ic_liked_k)}
                     var myUserLike = userLike(LoginActivity.userUIDS, true)
                     database.collection("PromoIntrested").document(promolist[position].promoStore).collection("interested_users").document(LoginActivity.userUIDS).set(myUserLike).addOnCompleteListener {
@@ -209,6 +212,8 @@ companion object {
                     }
 
                 } else {
+                    userLikedSubcategoryRemoved(promolist[position])
+
                     uiThread {   interested.setImageResource(R.drawable.interested)}
                     database.collection("PromoIntrested").document(promolist[position].promoStore).collection("interested_users").document(LoginActivity.userUIDS).delete().addOnCompleteListener {
                         Log.e(TAG, "deleted")
@@ -222,7 +227,6 @@ companion object {
                 }
 
             }
-
 
 
         }
@@ -311,6 +315,119 @@ companion object {
 
     }
 
+
+    fun userLikedSubcategory(myPromo:PromoModel) {
+        Log.e(TAG, "userViewedSubcategory")
+        database.collection("PromoData").document("PromoLikes").collection("Promos").document(myPromo.promoID).collection("Users").document(FragmentCategory.globalUserDemography.Email).set(FragmentCategory.globalUserDemography).addOnSuccessListener {
+            Log.e(TAG, "Store is fucking satored")
+
+        }
+        for (i in 0 until myPromo.subcategories.size) {
+            doAsync {
+
+                var prevCountLiked = 0
+
+                database.collection("UserLikedPreferences").document(LoginActivity.userUIDS).collection("Subcategories").document(myPromo.subcategories[i]).get().addOnCompleteListener { task ->
+
+                    if (task.isSuccessful) {
+
+                        val document = task.result
+                        if (document.exists()) {
+
+                            var mySubcategoryPref = document.toObject(UserSubcategoriesPreferencesParcelable::class.java)
+                            prevCountLiked = mySubcategoryPref.viewCount + 1
+                            Log.e(TAG, "Cached document data: ${document?.data}")
+
+                            var mySubcategoryPreference = UserSubcategoriesPreferences(myPromo.subcategories[i], prevCountLiked)
+                            database.collection("UserLikedPreferences").document(LoginActivity.userUIDS).collection("Subcategories").document(myPromo.subcategories[i]).set(mySubcategoryPreference).addOnCompleteListener {
+
+
+                                Log.e(TAG, "UserLikedPreferences Success")
+                            }
+                        } else {
+                            Log.e(TAG, "Cached get failed: ", task.exception)
+                            var mySubcategoryPreference = UserSubcategoriesPreferences(myPromo.subcategories[i], 1)
+                            database.collection("UserLikedPreferences").document(LoginActivity.userUIDS).collection("Subcategories").document(myPromo.subcategories[i]).set(mySubcategoryPreference).addOnCompleteListener {
+
+
+                                Log.e(TAG, "UserLikedPreferences Success")
+                            }
+                        }
+
+                    } else {
+                        Log.e(TAG, "Cached get failed: ", task.exception)
+                        var mySubcategoryPreference = UserSubcategoriesPreferences(myPromo.subcategories[i], 1)
+                        database.collection("UserLikedPreferences").document(LoginActivity.userUIDS).collection("Subcategories").document(myPromo.subcategories[i]).set(mySubcategoryPreference).addOnCompleteListener {
+
+
+                            Log.e(TAG, "UserLikedPreferences Success")
+                        }
+                    }
+
+                }
+
+
+
+
+            }
+        }
+    }
+    fun userLikedSubcategoryRemoved(myPromo:PromoModel) {
+        Log.e(TAG, "userViewedSubcategory")
+        database.collection("PromoData").document("PromoLikes").collection("Promos")
+                .document(myPromo.promoID).collection("Users").document(FragmentCategory.globalUserDemography.Email).delete()
+
+
+        for (i in 0 until myPromo.subcategories.size) {
+            doAsync {
+
+                var prevCountLiked = 0
+
+                database.collection("UserLikedPreferences").document(LoginActivity.userUIDS).collection("Subcategories").document(myPromo.subcategories[i]).get().addOnCompleteListener { task ->
+
+                    if (task.isSuccessful) {
+
+                        val document = task.result
+                        if (document.exists()) {
+
+                            var mySubcategoryPref = document.toObject(UserSubcategoriesPreferencesParcelable::class.java)
+                            prevCountLiked = mySubcategoryPref.viewCount - 1
+                            Log.e(TAG, "Cached document data: ${document?.data}")
+
+                            var mySubcategoryPreference = UserSubcategoriesPreferences(myPromo.subcategories[i], prevCountLiked)
+                            database.collection("UserLikedPreferences").document(LoginActivity.userUIDS).collection("Subcategories").document(myPromo.subcategories[i]).set(mySubcategoryPreference).addOnCompleteListener {
+
+
+                                Log.e(TAG, "UserLikedPreferences Success")
+                            }
+                        } else {
+                            Log.e(TAG, "Cached get failed: ", task.exception)
+                            var mySubcategoryPreference = UserSubcategoriesPreferences(myPromo.subcategories[i], 1)
+                            database.collection("UserLikedPreferences").document(LoginActivity.userUIDS).collection("Subcategories").document(myPromo.subcategories[i]).set(mySubcategoryPreference).addOnCompleteListener {
+
+
+                                Log.e(TAG, "UserLikedPreferences Success")
+                            }
+                        }
+
+                    } else {
+                        Log.e(TAG, "Cached get failed: ", task.exception)
+                        var mySubcategoryPreference = UserSubcategoriesPreferences(myPromo.subcategories[i], 1)
+                        database.collection("UserLikedPreferences").document(LoginActivity.userUIDS).collection("Subcategories").document(myPromo.subcategories[i]).set(mySubcategoryPreference).addOnCompleteListener {
+
+
+                            Log.e(TAG, "UserLikedPreferences Success")
+                        }
+                    }
+
+                }
+
+
+
+
+            }
+        }
+    }
 
 
 }

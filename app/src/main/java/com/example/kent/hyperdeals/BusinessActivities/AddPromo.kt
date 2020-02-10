@@ -148,7 +148,12 @@ class AddPromo : AppCompatActivity(),DatePickerDialog.OnDateSetListener,TimePick
 
 
 
-        imageView7.setOnClickListener { finish() }
+        imageView7.setOnClickListener { finish()
+                categoryLista = ArrayList<String>()
+
+                globalCustomSubcategory = ArrayList<String>()
+            CategoryAdapterBusiness.globalCategoryList =  ArrayList<CategoryParse>()
+        }
         btnGetLocation.setOnClickListener { getLocation()
         }
         addPromoImage.setOnClickListener{
@@ -433,7 +438,6 @@ class AddPromo : AppCompatActivity(),DatePickerDialog.OnDateSetListener,TimePick
     }
     override fun saveCategoriesBusiness(myCategoryList: ArrayList<CategoryParse>) {
         globalCategorylist=ArrayList<CategoryParse>()
-        globalCategorylist = myCategoryList
         categoryLista = ArrayList<String>()
             Log.e(TAG, "saveCategoriesBusiness")
          subcategoryList = ArrayList<String>()
@@ -596,6 +600,10 @@ Log.e("Suway2","${subcategoryList.size} ${subcategoryList.toString()}")
 
         var myArrayStringSub = globalCustomSubcategory
         var myArrayStringSub2 = categoryLista
+        globalCustomSubcategory= ArrayList()
+        categoryLista = ArrayList()
+        CategoryAdapterBusiness.globalCategoryList =  ArrayList<CategoryParse>()
+
         Log.e(TAG,"time for push ${myArrayStringSub.size}")
         for(k in 0 until myArrayStringSub.size){
             doAsync {

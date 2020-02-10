@@ -74,6 +74,8 @@ class FragmentCategory: Fragment() {
         var run = 0
         var globalPreferePromoList  = ArrayList<PromoModel>()
 
+        lateinit var globalUserDemographyParce:UserModelParce
+        lateinit var globalUserDemography:UserModel
 
     }
     var callTimes = false
@@ -278,7 +280,24 @@ fun getPromos(){
             Log.e(TAG, "DocumentSnapshot data: ${document.data}")
 
             var userDemography = document.toObject(UserModelParcelable::class.java)
+            globalUserDemographyParce = document.toObject(UserModelParce::class.java)
+
+            if(globalUserDemographyParce.Age.toInt()<13){
+                globalUserDemographyParce.Age = "Kids"
+
+            }
+            else if(globalUserDemographyParce.Age.toInt()<20 && globalUserDemographyParce.Age.toInt()>12){
+                globalUserDemographyParce.Age = "Teenager"
+
+            }
+            else if(globalUserDemographyParce.Age.toInt()>=20){
+                globalUserDemographyParce.Age = "Adult"
+
+            }
             Log.e(TAG,"${userDemography.FirstName}")
+
+
+            globalUserDemography = UserModel(globalUserDemographyParce.FirstName, globalUserDemographyParce.LastName, globalUserDemographyParce.Email,"*****", globalUserDemographyParce.Age, globalUserDemographyParce.Gender, globalUserDemographyParce.Status)
         } else {
             Log.e(TAG, "No such document")
         }
@@ -359,7 +378,10 @@ fun getPromos(){
                             }
 
 if(upload.approved) {
-    promolist.add(upload)
+    if(upload.startDateYear.equals(2020) && upload.startDateDay.equals(9) ){
+        Log.e(TAG,"mga yawa pisti animal")
+                promolist.add(upload)
+            }
 }
 
 //
@@ -922,7 +944,7 @@ fun repushPromoDetails(randomUIID:String,pEntity:PromoModelBusinessman){
 
             var rand = Random()
             var n = rand.nextInt(1000)
-            var NotifcationID2 = Channel.length + n
+            var NotifcationID2 = myPromoModel.promoID.length * myPromoModel.promoStore.length + myPromoModel.endTimeMinute.toInt()
             Log.e("Notification test", "Succeed")
 
 

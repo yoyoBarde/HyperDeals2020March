@@ -28,6 +28,7 @@ import com.example.kent.hyperdeals.FragmentsBusiness.Business_PromoProfile;
 import com.example.kent.hyperdeals.LoginActivity;
 import com.example.kent.hyperdeals.Model.PromoModel;
 import com.example.kent.hyperdeals.Model.subsubModel;
+import com.example.kent.hyperdeals.MyAdapters.PromoListAdapter;
 import com.example.kent.hyperdeals.Promo_Detail;
 import com.example.kent.hyperdeals.R;
 
@@ -375,7 +376,7 @@ displayLocation();
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(context, Business_PromoProfile.class);
-                myIntent.putExtra("object",myPromoModel);
+                PromoListAdapter.promoProfile = myPromoModel;
                 startActivity(myIntent);
 
             }

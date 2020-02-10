@@ -29,6 +29,7 @@ import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.layoutInflater
 import org.jetbrains.anko.support.v4.toast
+import org.jetbrains.anko.uiThread
 import java.lang.Exception
 import java.util.*
 import kotlin.collections.ArrayList
@@ -257,6 +258,7 @@ showDialog(1,promoList)
             }
 
 
+            uiThread { Toast.makeText(activity!!,"Dummy Data pushed",Toast.LENGTH_LONG).show() }
         }
 
     }

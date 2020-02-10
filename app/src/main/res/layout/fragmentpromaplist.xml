@@ -8,6 +8,8 @@
     android:id="@+id/swipe"
 
     >
+
+
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -41,6 +43,12 @@
     android:textStyle="bold"
     android:layout_gravity="center_horizontal"
     />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/filter_spinner"
+            android:layout_gravity="center_horizontal"
+            />
 
     <TextView
         android:layout_width="wrap_content"
