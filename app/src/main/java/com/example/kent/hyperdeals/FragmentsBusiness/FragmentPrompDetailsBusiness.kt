@@ -4,6 +4,8 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.StaggeredGridLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,7 @@ import android.view.ViewGroup
 import com.example.kent.hyperdeals.LoginActivity
 import com.example.kent.hyperdeals.Model.*
 import com.example.kent.hyperdeals.MyAdapters.PromoListAdapter
+import com.example.kent.hyperdeals.MyAdapters.SelectedSubcategoryAdapterBusiness
 import com.example.kent.hyperdeals.R
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_fragment_promp_details_business.*
@@ -50,12 +53,22 @@ var likeRetrieved = false
         {
             endDate= ""
         }
-        promoDuration.text = getMonthInwords(PromoListAdapter.promoProfile.startDateMonth)+" ${PromoListAdapter.promoProfile.startDateDay} until ${endDate} ${PromoListAdapter.promoProfile.endDateDay}"
+        promoDuration.text = getMonthInwords(PromoListAdapter.promoProfile.startDateMonth+1)+" ${PromoListAdapter.promoProfile.startDateDay} until ${endDate} ${PromoListAdapter.promoProfile.endDateDay}"
         tv_promoTitle.text = PromoListAdapter.promoProfile.promoname
         tv_promoStore.text = PromoListAdapter.promoProfile.promoStore
         tv_promoPlace.text = PromoListAdapter.promoProfile.promoPlace
         tv_promoDescription.text = PromoListAdapter.promoProfile.promodescription
         tv_promoContect.text = PromoListAdapter.promoProfile.promoContactNumber
+
+        if(PromoListAdapter.promoProfile.subcategories.size!=0) {
+            val selectedSubAdapter = SelectedSubcategoryAdapterBusiness(activity!!, PromoListAdapter.promoProfile.subcategories)
+            val myStagger = StaggeredGridLayoutManager(3, LinearLayoutManager.HORIZONTAL)
+            subcategoryRecycler.layoutManager = myStagger
+            subcategoryRecycler.adapter = selectedSubAdapter
+
+        }
+
+
         iv_call!!.setOnClickListener {
             val callIntent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" +PromoListAdapter.promoProfile.promoContactNumber))
             startActivity(callIntent)

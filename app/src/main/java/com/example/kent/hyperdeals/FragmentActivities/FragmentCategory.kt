@@ -10,9 +10,7 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.location.Location
-import android.location.LocationListener
-import android.location.LocationManager
+import android.location.*
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
@@ -103,6 +101,7 @@ class FragmentCategory: Fragment() {
     var notificationList = arrayListOf<String>("Firstnull")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragmentcategory, container, false)
+
 
 
     }
@@ -322,7 +321,8 @@ fun getPromos(){
                     upload.startDateCalendar.set(upload.startDateYear, upload.startDateMonth - 1, upload.startDateDay)
                     upload.endDateCalendar.set(upload.endDateYear, upload.endDateMonth - 1, upload.endDateDay)
                     Log.e(TAG,"${   upload.promoID } ${upload.promoname}")
-
+//                  var adress =   getAdress(upload.promoLocation.latitude,upload.promoLocation.longitude)
+//                    Log.e(TAG,"$adress  locality")
 //                    if(upload.startDateMonth!=7){
 //                        doAsync{
 //
@@ -378,12 +378,12 @@ fun getPromos(){
                                 Log.d(TAG, "get failed with ", exception)
                             }
 
-if(upload.approved) {
-    if(upload.startDateYear.equals(2020) && upload.startDateDay.equals(9) ){
+//if(upload.approved && adress == "Cebu") {
+    if(upload.startDateYear.equals(2020)  ){
         Log.e(TAG,"mga yawa pisti animal")
                 promolist.add(upload)
             }
-}
+//}
 
 //
 //                    if (currentDate.timeInMillis <= upload.endDateCalendar.timeInMillis)
@@ -401,6 +401,7 @@ if(upload.approved) {
 //                    }
                 }
                 try {
+
                     getPreferenceMatched()
 
                 }
@@ -935,6 +936,32 @@ fun repushPromoDetails(randomUIID:String,pEntity:PromoModelBusinessman){
     database.collection("PromoDetails").document(randomUIID).set(pEntity)
     toast("Success")
 }
+    fun getAdress(latitude: Double, longitude: Double):String {
+
+        val geocoder: Geocoder
+        val addresses: List<Address>
+        geocoder = Geocoder(activity!!, Locale.getDefault())
+
+        addresses = geocoder.getFromLocation(latitude, longitude, 1) // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+
+        val address = addresses[0].getAddressLine(0) // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+        val city = addresses[0].locality
+        val state = addresses[0].adminArea
+        val country = addresses[0].countryName
+        val postalCode = addresses[0].postalCode
+        val knownName = addresses[0].featureName
+        val subLocality = addresses[0].subLocality
+        val premises = addresses[0].premises
+        val a = addresses[0].subAdminArea
+
+
+
+
+        Log.e(TAG,"get adress")
+        Log.e(TAG,"$city \n  $state\n  $country\n  $postalCode\n  $knownName\n  $subLocality $premises $a")
+        Log.e(TAG,address)
+        return a
+    }
 
     fun displayNotification(Channel: String, notificationID: Int,myPromoModel:PromoModel)   {
 
@@ -945,7 +972,7 @@ fun repushPromoDetails(randomUIID:String,pEntity:PromoModelBusinessman){
 
             var rand = Random()
             var n = rand.nextInt(1000)
-            var NotifcationID2 = myPromoModel.promoID.length * myPromoModel.promoStore.length + myPromoModel.endTimeMinute.toInt()
+            var NotifcationID2 = myPromoModel.promoID.length * myPromoModel.promoStore.length + myPromoModel.endTimeMinute.toInt() +n
             Log.e("Notification test", "Succeed")
 
 
@@ -1008,6 +1035,28 @@ fun repushPromoDetails(randomUIID:String,pEntity:PromoModelBusinessman){
             notificationManagerCompat.notify(NotifcationID2, builder.build())
 
         }
+    }
+
+
+
+    fun deletePromoSpecified(myPromoList:ArrayList<PromoModel>){
+        Log.e(TAG,"deletePromoSpecified")
+        for(i in 0 until myPromoList.size){
+            var promo = myPromoList[i]
+
+            database.collection("PromoDetails").document(myPromoList[i].promoID).delete().addOnSuccessListener {
+
+                Log.e(TAG,"${promo.promoname}  is deleted ")
+
+
+
+            }
+
+
+
+        }
+
+
     }
 
 }

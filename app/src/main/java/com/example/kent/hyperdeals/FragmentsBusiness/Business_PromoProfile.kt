@@ -54,7 +54,6 @@ val TAG = "Business_PromoProfile"
                 .load(PromoListAdapter.promoProfile.promoImageLink)
                 .placeholder(R.drawable.hyperdealslogofinal)
                 .into(iv_promo_image)
-        userViewedSubcategory(PromoListAdapter.promoProfile)
 
 
         val viewPager   = findViewById<ViewPager>(R.id.viewPagerBusinessman)
@@ -66,6 +65,7 @@ val TAG = "Business_PromoProfile"
         adapter.addFragments(FragmentPromoSaleBusiness(),"Items")
 
         if(MainActivity.userLog){
+            userViewedSubcategory(PromoListAdapter.promoProfile)
 
             adapter.addFragments(FragmentRelatedPromos(),"Similar Promos")
 
@@ -93,10 +93,12 @@ val TAG = "Business_PromoProfile"
 
     fun userViewedSubcategory(myPromo:PromoModel) {
         Log.e(TAG, "userViewedSubcategory")
-        database.collection("PromoData").document("PromoViews").collection("Promos").document(myPromo.promoID).collection("Users").document().set(FragmentCategory.globalUserDemography).addOnSuccessListener {
-            Log.e(TAG, "Store is fucking satored")
 
-        }
+            database.collection("PromoData").document("PromoViews").collection("Promos").document(myPromo.promoID).collection("Users").document().set(FragmentCategory.globalUserDemography).addOnSuccessListener {
+                Log.e(TAG, "Store is fucking satored")
+
+            }
+
 
         for (i in 0 until myPromo.subcategories.size) {
             doAsync {

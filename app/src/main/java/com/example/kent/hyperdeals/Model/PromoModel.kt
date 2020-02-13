@@ -103,6 +103,27 @@ class PromoModel() : Parcelable {
         var ageMatchDismissed = 0
         var statusMatchDismissed = 0
 
+        var genderMatchViewsPts = 0
+        var ageMatchViewsPts = 0
+        var statusMatchViewsPts = 0
+
+        var genderMatchLikesPts = 0
+        var ageMatchLikesPts = 0
+        var statusMatchLikesPts = 0
+
+        var genderMatchPreferredPts = 0
+        var ageMatchPreferredPts = 0
+        var statusMatchPreferredPts = 0
+
+        var genderMatchAvailedPts = 0
+        var ageMatchAvailedPts = 0
+        var statusMatchAvailedPts = 0
+
+        var genderMatchDismissedPts = 0
+        var ageMatchDismissedPts = 0
+        var statusMatchDismissedPts= 0
+
+
 
 
         constructor(parcel: Parcel) : this() {

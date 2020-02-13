@@ -152,6 +152,27 @@
             />
 
     </LinearLayout>
+    <LinearLayout
+        android:paddingVertical="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:textSize="20dp"
+            android:textStyle="italic"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subcategories :"
+            android:textColor="@color/black"
+            />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/subcategoryRecycler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 
     <LinearLayout
 

@@ -65,6 +65,7 @@ class FragmentReach : Fragment() {
                 for (DocumentSnapshot in task.result) {
                     val upload = DocumentSnapshot.toObject(PromoModel::class.java)
                     Log.d(FragmentProMap.TAG, DocumentSnapshot.getId() + " => " + DocumentSnapshot.getData())
+                    upload.promoID = DocumentSnapshot.id
                     promolist.add(upload)
                     toast("success")
 
